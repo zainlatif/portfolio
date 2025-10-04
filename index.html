@@ -32,7 +32,21 @@
         </ul>
       </nav>
       <button onclick="openResume()">Resume</button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+        &#9776;
+      </button>
     </header>
+
+    <!-- Side Panel for Mobile Nav -->
+    <div id="side-panel" class="side-panel">
+      <button class="close-btn" id="close-panel" aria-label="Close menu">&times;</button>
+      <ul>
+        <li><a href="#about" onclick="closePanel()">About</a></li>
+        <li><a href="#projects" onclick="closePanel()">Projects</a></li>
+        <li><a href="#courses" onclick="closePanel()">Certifications</a></li>
+        <li><a href="#contact" onclick="closePanel()">Contact</a></li>
+      </ul>
+    </div>
 
     <!-- Landing Page -->
     <section class="landing-page-container">
@@ -196,6 +210,7 @@
 
 <!-- JS -->
 <script>
+  // Accordion JS (existing)
   const acc = document.querySelectorAll(".accordion-btn");
   acc.forEach((btn) => {
     btn.addEventListener("click", function () {
@@ -208,6 +223,26 @@
       }
     });
   });
+
+  // Hamburger & Side Panel JS
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const sidePanel = document.getElementById('side-panel');
+  const closePanelBtn = document.getElementById('close-panel');
+
+  hamburgerBtn.addEventListener('click', () => {
+    sidePanel.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closePanelBtn.addEventListener('click', () => {
+    sidePanel.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+
+  function closePanel() {
+    sidePanel.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 </script>
 
 
